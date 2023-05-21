@@ -58,6 +58,8 @@ Rails.application.routes.draw do
 
   ## My Manually generated Route:
 
+  get("/", { :controller => "user_authentication", :action => "index"})
+
   get("/users", { :controller => "user_authentication", :action => "index"})
 
   # Routes for the User account:
