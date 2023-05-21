@@ -1,0 +1,50 @@
+<h1><%= @user.username %></h1>
+
+<dl>
+  <dt>Private</dt>
+    <dd><%= @user.private %></dd>
+
+  <dt>Likes (change to Followers later)</dt>
+    <dd><%= @user.likes_count %></dd>
+  <dt>Following (change to Following later)</dt>
+    <dd><%= @user.likes_count %></dd>
+
+  <ul>
+    <li><a href="/users/<%= @user.username %>">Profile</a></li>
+    <li><a href="/users/<%= @user.username %>">Liked photos</a></li>
+    <li><a href="/users/<%= @user.username %>">Feed</a></li>
+    <li><a href="/users/<%= @user.username %>">Discover</a></li>
+  </ul>
+</dl>
+
+<h2>Own photos (<%= @user.username %>)</h2>
+
+<table border="1">
+<tr>
+    <th>
+      Image
+    </th>
+
+    <th>
+      Owner
+    </th>
+
+    <th>
+      Caption
+    </th>
+
+    <th>
+      Posted
+    </th>
+    <th>
+      Likes
+    </th>
+
+    <th></th>
+  </tr>
+
+  <tr>
+
+  </tr>
+
+</table> 
