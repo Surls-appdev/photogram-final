@@ -4,10 +4,10 @@
   <dt>Private</dt>
     <dd><%= @user.private %></dd>
 
-  <dt>Likes (change to Followers later)</dt>
-    <dd><%= @user.likes_count %></dd>
-  <dt>Following (change to Following later)</dt>
-    <dd><%= @user.likes_count %></dd>
+  <dt>Followers</dt>
+    <dd><%= @user.followers.count %></dd>
+  <dt>Following</dt>
+    <dd><%= @user.following.count %></dd>
 
   <ul>
     <li><a href="/users/<%= @user.username %>">Profile</a></li>
@@ -17,7 +17,7 @@
   </ul>
 </dl>
 
-<h2>Own photos (<%= @user.username %>)</h2>
+<h2>Own photos (<%= @user.own_photos.count %>)</h2>
 
 <table border="1">
 <tr>
@@ -44,5 +44,35 @@
     </th>
   </tr>
    
-    
+    <% @user.own_photos.each do |zebra| %>
+      <tr>
+        <td>
+          <img src="<%= zebra.image %>">
+        </td>
+
+        <td>
+          <%= zebra.poster.username %>
+        </td>
+
+        <td>
+          <%= zebra.caption %>
+        </td>
+
+        <td>
+          <%= zebra.created_at %>
+        </td>
+
+        <td>
+          <%= zebra.likes_count %>
+        </td>
+
+        <td>
+          <a href="/photos/<%= zebra.id %>">
+              Show details
+          </a>
+        </td>
+
+      </tr>
+
+    <% end %>
 </table> 
