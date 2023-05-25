@@ -46,27 +46,27 @@
 <% @user.liked_photos.each do |apple| %>
   <tr>
     <td>
-      <img src="<% apple.image %>">
+      <img src="<%= apple.image %>">
     </td>
 
     <td>
-      <% apple.poster.username %>
+      <%= apple.poster.username %>
     </td>
    
     <td>
-      <% apple.caption %>
+      <%= apple.caption %>
     </td>
    
     <td>
-      <% apple.created_at %>
+      <%= apple.created_at %>
     </td>
    
     <td>
-      <% apple.likes_count %>
+      <%= apple.likes_count %>
     </td>
    
     <td>
-      <a href="/users<% apple.id %>">
+      <a href="/users<%= apple.id %>">
         Show details
       </a>
     </td>
