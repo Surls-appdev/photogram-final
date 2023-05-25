@@ -36,7 +36,7 @@
         Owner
       </dt>
       <dd>
-        <%= @the_photo.poster.username.capitalize %>
+        <%= @the_photo.poster.username %>
       </dd>
 
        <dt>
@@ -51,6 +51,15 @@
       </dt>
       <dd>
         <%= @the_photo.likes_count %>
+      </dd>
+
+      <dt>
+        Fans
+      </dt>
+      <dd>
+        <% @the_photo.fans.each do |fan| %>
+          <%= fan.username %>
+        <% end %>
       </dd>
 
       <dt>
@@ -128,3 +137,39 @@
 </div>
 
 <hr>
+
+<div>
+  <h2>Comments<h2>
+    <table border="0.5">
+      <tr>
+          <th>
+            Commenter
+          </th>
+
+          <th>
+            Comment
+          </th>
+
+          <th>
+            Posted
+          </th>
+      </tr>
+
+      <p><% @the_photo.comments.each do |comment| %></p>
+      <tr>        
+          <td>
+            <%= comment.commenter.username %>
+          </td>
+
+          <td>
+            <%= comment.body %>
+          </td>
+
+          <td>
+            <%= comment.created_at %>
+          </td>
+        <% end %>
+      </tr>
+    
+    </table> 
+</div>

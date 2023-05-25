@@ -4,10 +4,10 @@
   <dt>Private</dt>
     <dd><%= @user.private %></dd>
 
-  <dt>Likes (change to Followers later)</dt>
-    <dd><%= @user.likes_count %></dd>
-  <dt>Following (change to Following later)</dt>
-    <dd><%= @user.likes_count %></dd>
+  <dt>Followers</dt>
+    <dd><%= @user.followers.count %></dd>
+  <dt>Following</dt>
+    <dd><%= @user.following.count %></dd>
 
   <ul>
     <li><a href="/users/<%= @user.username %>">Profile</a></li>
@@ -43,7 +43,35 @@
     <th></th>
   </tr>
 
+<% @user.liked_photos.each do |apple| %>
   <tr>
+    <td>
+      <img src="<% apple.image %>">
+    </td>
+
+    <td>
+      <% apple.poster.username %>
+    </td>
+   
+    <td>
+      <% apple.caption %>
+    </td>
+   
+    <td>
+      <% apple.created_at %>
+    </td>
+   
+    <td>
+      <% apple.likes_count %>
+    </td>
+   
+    <td>
+      <a href="/users<% apple.id %>">
+        Show details
+      </a>
+    </td>
+  <% end %>
+   
 
   </tr>
 
