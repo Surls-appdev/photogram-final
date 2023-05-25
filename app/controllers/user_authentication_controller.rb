@@ -14,6 +14,13 @@ class UserAuthenticationController < ApplicationController
     render({ :template => "users/show.html.erb"})
   end
   
+  def show_likes
+    the_username = params.fetch("the_username")
+    @user = User.where({ :username => the_username}).at(0)
+
+    render({ :template => "users/users_likes.html.erb"})
+  end
+  
   ## Automatically generated actions: ##
 
   # Uncomment line 3 in this file and line 5 in ApplicationController if you want to force users to sign in before any other actions.
@@ -58,6 +65,7 @@ class UserAuthenticationController < ApplicationController
     @user.email = params.fetch("query_email")
     @user.password = params.fetch("query_password")
     @user.password_confirmation = params.fetch("query_password_confirmation")
+    @user.username = params.fetch("input_username")
 
     save_status = @user.save
 
@@ -65,6 +73,7 @@ class UserAuthenticationController < ApplicationController
       session[:user_id] = @user.id
    
       redirect_to("/", { :notice => "User account created successfully."})
+      #redirect_to("/users/#{user.username}", {:notice => "Welcome, " + user.username + "!"})
     else
       redirect_to("/user_sign_up", { :alert => @user.errors.full_messages.to_sentence })
     end

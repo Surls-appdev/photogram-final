@@ -29,6 +29,9 @@
   <li>
       <a href="/user_sign_out">Sign Out</a>
   </li>
+   <li>
+      <%= session.fetch(:user_id)%>
+    </li>
 
 </ul>  
 <% if notice.present? %>

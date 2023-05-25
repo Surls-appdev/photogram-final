@@ -62,6 +62,7 @@ Rails.application.routes.draw do
 
   get("/users", { :controller => "user_authentication", :action => "index"})
   get("/users/:the_username", { :controller => "user_authentication", :action => "show"})
+  get("/users/:the_username/liked_photos", { :controller => "user_authentication", :action => "show_likes"})
 
   # Routes for the User account:
 
