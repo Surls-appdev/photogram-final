@@ -15,6 +15,9 @@ class Photo < ApplicationRecord
   validates(:poster, { :presence => true })
   validates(:image, { :presence => true })
 
+  has_many :likes
+  has_many :fans, through: :likes, source: :fan
+
   # belongs_to(:poster, { :foreign_key => "owner_id", :class_name => "User"})
 
   def poster

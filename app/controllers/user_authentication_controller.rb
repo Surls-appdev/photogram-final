@@ -21,6 +21,20 @@ class UserAuthenticationController < ApplicationController
     render({ :template => "users/users_likes.html.erb"})
   end
   
+  def show_feed
+    the_username = params.fetch("the_username")
+    @user = User.where({ :username => the_username}).at(0)
+
+    render({ :template => "users/users_feed.html.erb"})
+  end
+  
+  def show_discover
+    the_username = params.fetch("the_username")
+    @user = User.where({ :username => the_username}).at(0)
+
+    render({ :template => "users/users_discover.html.erb"})
+  end
+  
   ## Automatically generated actions: ##
 
   # Uncomment line 3 in this file and line 5 in ApplicationController if you want to force users to sign in before any other actions.

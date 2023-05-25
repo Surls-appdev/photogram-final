@@ -17,7 +17,7 @@
   </ul>
 </dl>
 
-<h2>Liked photos (<%= @user.likes_count %>)</h2>
+<h2>Feed (<%= @user.following.count %>)</h2>
 
 <table border="1">
 <tr>
@@ -43,34 +43,38 @@
     <th></th>
   </tr>
 
-<% @user.liked_photos.each do |apple| %>
-  <tr>
-    <td>
-      <img src="<%= apple.image %>">
-    </td>
+<% @user.following.each do |orange| %>
+  <% orange.own_photos.each do |photo| %>
+    <tr>
+      <td>
+        <img src="<%= photo.image %>">
+      </td>
 
-    <td>
-      <%= apple.poster.username %>
-    </td>
-   
-    <td>
-      <%= apple.caption %>
-    </td>
-   
-    <td>
-      <%= apple.created_at %>
-    </td>
-   
-    <td>
-      <%= apple.likes_count %>
-    </td>
-   
-    <td>
-      <a href="/users/<%= apple.id %>">
-        Show details
-      </a>
-    </td>
+      <td>
+        <%= photo.poster.username %>
+      </td>
+
+      <td>
+        <%= photo.caption %>
+      </td>
+
+      <td>
+        <%= photo.created_at %>
+      </td>
+
+      <td>
+        <%= photo.likes_count %>
+      </td>
+
+      <td>
+        <a href="/users/<%= photo.poster.id %>">
+          Show details
+        </a>
+      </td>
+    </tr>
   <% end %>
+<% end %>
+
    
 
   </tr>

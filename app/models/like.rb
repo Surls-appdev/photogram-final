@@ -12,6 +12,8 @@ class Like < ApplicationRecord
   validates(:fan, { :presence => true })
   validates(:photo, { :presence => true })
 
+  belongs_to :fan, class_name: 'User', foreign_key: 'fan_id'
+
   def fan
     return User.where({ :id => self.fan_id }).at(0)
   end
