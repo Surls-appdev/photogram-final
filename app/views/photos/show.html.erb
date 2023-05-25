@@ -20,6 +20,12 @@
 
     <dl>
       <dt>
+        Image
+      </dt>
+      <dd>
+        <img src="<%= @the_photo.image %>">
+      </dd>
+      <dt>
         Caption
       </dt>
       <dd>
@@ -27,17 +33,17 @@
       </dd>
 
       <dt>
-        Comments count
+        Owner
       </dt>
       <dd>
-        <%= @the_photo.comments_count %>
+        <%= @the_photo.poster.username.capitalize %>
       </dd>
 
-      <dt>
-        Image
+       <dt>
+        Posted
       </dt>
       <dd>
-        <%= @the_photo.image %>
+        <%= time_ago_in_words(@the_photo.created_at) %> ago
       </dd>
 
       <dt>
@@ -48,19 +54,12 @@
       </dd>
 
       <dt>
-        Owner
+        Comments count
       </dt>
       <dd>
-        <%= @the_photo.poster.username.capitalize %>
+        <%= @the_photo.comments_count %>
       </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_photo.created_at) %> ago
-      </dd>
-
+      
       <dt>
         Updated at
       </dt>
